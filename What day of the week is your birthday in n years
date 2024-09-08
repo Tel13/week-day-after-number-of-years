@@ -1,0 +1,64 @@
+
+from calendar import weekday
+from datetime import date, datetime
+
+
+def day_in_week(num_yers):
+    week_day_translate = {
+        "Monday" : "Luni",
+        "Tuesday": "Marti",
+        "Wednesday": "Miercuri",
+        "Thursday": "Joi",
+        "Friday": "Vineri",
+        "Saturday": "Sambata",
+        "Sunday" : "Duminica"
+    }
+    now_year = datetime.now().year
+
+    try:
+        k = True
+        while k:
+            birthday = int(input("Tasteaza ziua nasteri tale (de la 1 la 31): "))
+            if birthday < 1 or birthday > 31:
+                print("Introdu o valoare intre limitele corecte.")
+            else:
+                k = False
+        k = True
+        while k:
+            birthmonth = int(input("Tasteaza luna nasteri tale (de la 1 la 12): "))
+            if birthmonth < 1 or birthmonth > 12:
+                print("Introdu o valoare intre limitele corecte.")
+            else:
+                k = False
+
+        k = True
+
+        birthyear = int(input("Tasteaza anul nasteri tale: "))
+
+    except ValueError as e:
+        print(f"A aparut o eroare: {e}")
+
+    else:
+        date_after_years = datetime(num_yers+birthyear, birthmonth, birthday)
+        weekday = date_after_years.strftime("%A")
+        return week_day_translate.get(weekday)
+
+
+
+if __name__ == "__main__":
+    while True:
+        try:
+            num_years = int(input("Tateaza numarul de ani pentru care vrei sa vezi ziua: "))
+        except ValueError as e:
+            print(f"A aparut o eroare: {e}, Trebuie sa fie un numar.")
+        else:
+             day = day_in_week(num_years)
+             print(f"Ziua din saptamana va fi {day}.")
+             quit = input("Tasteaza Q sau q pentru a iesi sau orice tasta pentru  a continua: ")
+             if quit == "Q" or quit == "q":
+                 exit()
+
+
+
+
+
