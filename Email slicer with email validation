@@ -1,0 +1,31 @@
+# import email_validator for validate the inserted email
+
+from email_validator import validate_email,EmailNotValidError
+
+
+#Email silcer
+def email_slicer(email):
+    # get the username
+    username = email[:email.index("@")]
+    # get the domain name
+    domain_name = email[email.index("@")+1:]
+    return username, domain_name
+
+def check(email):
+    try:
+        v = validate_email(email)
+        email = v["email"]
+        return True
+    except EmailNotValidError as e:
+        print(f"Email fromat error: {e}")
+
+if __name__ == '__main__':
+    email = input("Insert the email: ")
+    email_v = check(email)
+    while not email_v:
+        email = input("Insert the email: ")
+        email_v = check(email)
+    username, domain_name = email_slicer(email)
+    print(f"The user name is {username} and the domain name is {domain_name}.")
+
+
