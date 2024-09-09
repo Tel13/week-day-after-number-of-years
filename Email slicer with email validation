@@ -13,8 +13,13 @@ def email_slicer(email):
 
 def check(email):
     try:
-        v = validate_email(email)
-        email = v["email"]
+        # Check that the email address is valid. Turn on check_deliverability
+        # for first-time validations like on account creation pages (but not
+        # login pages).
+        v = validate_email(email, check_deliverability=False)
+        # After this point, use only the normalized form of the email address,
+        # especially before going to a database query.
+        # email = v.normalized
         return True
     except EmailNotValidError as e:
         print(f"Email fromat error: {e}")
