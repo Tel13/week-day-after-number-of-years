@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Clas view delete page
+{% endblock %}
+
+{% block content %}
+  <h1>Class view delete page</h1>
+
+  <form method="POST" >
+    {% csrf_token %}
+    <p>Are you sure?</p>
+    <div class="col-auto">
+      <button type="submit" value="submit" class="btn btn-primary mb-3">Confirm</button>
+    </div>
+  </form>
+
+{% endblock %}

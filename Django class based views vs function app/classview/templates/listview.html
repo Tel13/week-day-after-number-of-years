@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+List view create page
+{% endblock %}
+
+{% block content %}
+<h1>List view page</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for object in geeksmodel_list %}
+    <tr>
+        <th scope="row">{{object.id}}</th>
+        <td><a href="{% url 'detail_view' object.pk %}"
+               class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{object.title}}</a>
+        </td>
+        <td>{{object.description}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

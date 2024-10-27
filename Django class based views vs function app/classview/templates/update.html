@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Clas view update page
+{% endblock %}
+
+{% block content %}
+  <h1>Class view update page</h1>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input class="form-control" id="title" name="title" placeholder="Type" value="{{ geeksmodel.title }}">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description textarea</label>
+      <textarea class="form-control" id="description" name="description" rows="3">{{ geeksmodel.description }}</textarea>
+    </div>
+    <div class="col-auto">
+      <button type="submit" value="submit" class="btn btn-primary mb-3">Submit</button>
+    </div>
+  </form>
+
+{% endblock %}

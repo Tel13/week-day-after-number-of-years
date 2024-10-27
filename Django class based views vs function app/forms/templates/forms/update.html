@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Update data</h1>
+
+<form action="update-data/{{ dataFromDb.id }}" method="post">
+  {% csrf_token %}
+  <p>First Name:</p>
+  <br>
+  <input name="first_name" value="{{ dataFromDb.first_name }}">
+  <p>Last Name:</p>
+  <br>
+  <input name="last_name" value="{{ dataFromDb.last_name }}">
+  <p>Roll Number:</p>
+  <br>
+  <input name="roll_number" value="{{ dataFromDb.roll_number }}">
+  <p>Password:</p>
+  <br>
+  <input name="password" value="{{ dataFromDb.password }}">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>
